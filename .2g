@@ -1,0 +1,12 @@
+:site-title "Interstellar Ventures"
+
+:stylesheets ((:media "screen" :href "/site-assets/style.css"))
+
+:html-header interstellar.ventures:html-widget-header
+
+:html-footer interstellar.ventures:html-widget-footer
+
+:meta-defaults (:html (:index-headers-p nil)
+                :latex (:preamble #.interstellar.ventures:latex-en
+                        :author "Interstellar Ventures")
+                :plain-text (:author "Interstellar Ventures"))
