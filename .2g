@@ -6,7 +6,6 @@
 
 :html-footer interstellar.ventures:html-widget-footer
 
-:meta-defaults (:html (:index-headers-p nil)
-                :latex (:preamble #.interstellar.ventures:latex-en
-                        :author "Interstellar Ventures")
-                :plain-text (:author "Interstellar Ventures"))
+:meta-defaults (:document (:author "Interstellar Ventures")
+                :html (:index-headers-p nil :author nil)
+                :latex (:preamble #.interstellar.ventures:latex-en))
