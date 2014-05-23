@@ -8,4 +8,4 @@
 
 :meta-defaults (:document (:author "Interstellar Ventures")
                 :html (:index-headers-p nil :author nil)
-                :latex (:preamble #.interstellar.ventures:latex-en))
+                :latex (:preamble interstellar.ventures:latex-en))

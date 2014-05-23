@@ -2,14 +2,12 @@
 
 (in-package :interstellar.ventures.latex)
 
-(defparameter latex-en
-  (document-preamble
-   :language :english
-   :format :a4-document)
-  "LaTeX preamble for english documents.")
+(setf (symbol-function 'latex-en)
+      (document-preamble
+       :language :english
+       :format :a4-document))
 
-(defparameter latex-de
-  (document-preamble
-   :language :german
-   :format :a4-document)
-  "LaTeX preamble for german documents.")
+(setf (symbol-function 'latex-de)
+      (document-preamble
+       :language :german
+       :format :a4-document))
