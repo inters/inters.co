@@ -14,10 +14,20 @@
   (:export :html-widget-header
            :html-widget-footer))
 
+(defpackage interstellar.ventures.metagen
+  (:use :cl
+        :geneva.cl
+        :geneva.mk2
+        :configuration
+        :quicklisp)
+  (:export :metagen))
+
 (defpackage interstellar.ventures
   (:use :interstellar.ventures.latex
-        :interstellar.ventures.html-widgets)
+        :interstellar.ventures.html-widgets
+        :interstellar.ventures.metagen)
   (:export :latex-en
            :latex-de
            :html-widget-header
-           :html-widget-footer))
+           :html-widget-footer
+           :metagen))

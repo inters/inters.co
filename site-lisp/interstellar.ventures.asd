@@ -5,7 +5,11 @@
                (:file "latex-preambles"
                       :depends-on ("packages"))
                (:file "html-widgets"
+                      :depends-on ("packages"))
+               (:file "metagen"
                       :depends-on ("packages")))
   :depends-on ("macro-html"
 	       "named-readtables"
-               "mr.gy"))
+               "mr.gy"
+               "open-geneva"
+               "configuration"))
