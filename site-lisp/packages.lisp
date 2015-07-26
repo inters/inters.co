@@ -2,8 +2,12 @@
 
 (defpackage interstellar.ventures.latex
   (:use :cl
-        :mr.gy.latex)
-  (:export :latex-en
+        :texp
+	:named-readtables)
+  (:export :document-preamble
+	   :handout-preamble
+	   :presentation-preamble
+           :latex-en
            :latex-de))
 
 (defpackage interstellar.ventures.html-widgets

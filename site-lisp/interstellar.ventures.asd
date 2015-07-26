@@ -10,6 +10,5 @@
                       :depends-on ("packages")))
   :depends-on ("macro-html"
 	       "named-readtables"
-               "mr.gy"
                "open-geneva"
                "configuration"))
