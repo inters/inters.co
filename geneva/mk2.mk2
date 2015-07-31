@@ -1,0 +1,214 @@
+_This is a draft standard, this notice will disappear once the
+specification is final._
+
+_Mk2_ is a human readable plain text language for expressing Geneva
+documents.¹ It is designed with both ergonomics and technical pragmatism
+in mind.
+
++ 1. [Geneva Document Specification](geneva-document.html)
+
+
+< Syntax
+
+ This formal definition uses the modified _BNF syntax_ of _ANSI CL's
+ Notational Conventions_.¹ The following axioms are used throughout the
+ definition:
+
+ _String_—A character sequence. The exact grammar depends on the
+ surrounding context. See _Escape Rules_.
+
+ _LF_—A newline character. The exact representation is platform
+ dependent.
+
+ _EOF_—The end of input.
+
+ _SP_—A whitespace character. The exact set of characters considered
+ whitespace is platform dependent.
+
+ + 1. [ANSI Common Lisp: Notational Conventions](http://users-phys.au.dk/harder/Notational-Conventions.html)
+
+ < Document and Section
+
+  #table *Table 1.* _Document_ and _section_ syntax.#
+  | Symbol         | Expression
+  | document       | {[} element separator {]}{*} _EOF_
+  | section        | {"<"} title separator {[} element separator {]}{*} {">"} separator
+  | title          | rich-text
+  | element        | section {|} table {|} plaintext {|} media {|} listing {|} paragraph
+  | separator      | double-lf {|} _EOF_
+  | double-lf      | _LF_ {[} _LF_  {]}{+}
+
+ >
+
+ < Paragraph and Listing
+
+  #table *Table 2.* _Paragraph_ and _Listing_ syntax.#
+  | Symbol    | Expression
+  | paragraph | text-token{+}
+  | listing   | item{+}
+  | item      | {"+"} rich-text
+
+ >
+
+ < Table, Media and Plaintext
+
+  #table *Table 3.* _Table_ syntax.#
+  | Symbol      | Expression
+  | table       | {"#table"} description {"#"} _LF_ table-body
+  | description | rich-text
+  | table-body  | row{*} last-row
+  | row         | column{+} _LF_
+  | last-row    | column{+}
+  | column      | {"|"} rich-text
+
+  #table *Table 4.* _Media_ syntax.#
+  | Symbol       | Expression
+  | media        | {"#media"} description {"#"} _LF_ _String_
+  | description  | rich-text
+
+  #table *Table 5.* _Plaintext_ syntax.#
+  | Symbol      | Expression
+  | plaintext   | {"#code"} description {"#"} _LF_ line{+} end
+  | description | rich-text
+  | line        |  _String_ _LF_
+  | end         | _SP_{*} {"#"}
+
+ >
+
+ < Rich Text
+
+  #table *Table 6.* _Rich text_ syntax.#
+  | Symbol      | Expression
+  | rich-text   | text-token{*}
+  | text-token  | bold {|} italic {|} fixed-width {|} url {|} plain
+  | bold        | {"*"} _String_ {"*"}
+  | italic      | {"_"} _String_ {"_"}
+  | fixed-width | {"{"} _String_ {"\}"}
+  | url         | {"["} _String_ {"]"} {[} {"("} _String_ {")"} {]}
+  | plain       | _String_
+
+ >
+
+ < Escape Rules
+
+  The {"\\"} (backslash) can be used to _escape_ the next character. The
+  grammatical significance of a character following {"\\"} is ignored.
+
+  The exact grammar of the _String_ axiom is context dependent. A
+  _String_ may not contain unescaped _terminating sequences_. A
+  terminating sequence is the set of any token following the _String_
+  axiom in a rule and _double-lf_. In order to escape a terminating
+  sequence its first character must be escaped.
+
+  For illustration consider the grammar in _Table 7_ which utilizes the
+  _String_ axiom. In _rule_ the _String_ axiom is followed by
+  _terminator_, thus {"foo"} is a _terminating sequence_ of _String_ in
+  _rule_. Valid and invalid character sequences for _String_ in _rule_
+  are shown in _Table 8_.
+
+  #table *Table 7.* Exemplary grammar rules to illustrate escape rules
+         for the _String_ axiom.#
+  | Symbol     | Expression
+  | rule       | _String_ terminator
+  | terminator | {"foo"}
+
+  #table *Table 8.* Valid and invalid character sequences for _String_ in
+         _rule_.#
+  | Valid               | Invalid
+  | {quick brown \\foo} | {quick brown foo}
+
+ >
+
+>
+
+
+< Examples
+
+ < Document and Section
+
+  The Mk2 file in _Figure 1_ contains a paragraph (_A quick brown
+  fox..._) and a section titled "On Pangrams" which contains another
+  paragraph (_A pangram is..._).
+
+  #code *Figure 1*#
+  A quick brown fox jumps over the lazy dog.
+
+  < On Pangrams
+
+   A pangram is a phrase that contains all of the letters of the
+   alphabet.
+
+  >
+  #
+
+ >
+
+ < Listing and Text Tokens
+
+  The listing in _Figure 2_ contains five items, each being a single text
+  token.
+
+  #code *Figure 2*#
+  + Plain text token
+  + *Bold text token*
+  + _Italic text token_
+  + {Fixed-width text token}
+  + [http://example.org/url/text-token]
+  + [Labeled URL](http://example.org)
+  #
+
+ >
+
+ < Table, Media and Plaintext
+
+  The Mk2 file in _Figure 3_ contains table, media and plaintext object,
+  each having a description and their respective bodies.
+
+  #code *Figure 3*#
+  #table Source: Wikipedia.#
+  | State                  | Area          | Total Population
+  | Bavaria                | 70,549.44 km² | 12,604,244
+  | North Rhine-Westphalia | 34,084.13 km² | 17,571,856
+
+  #media Imaginary embedded video.#
+  http://example.org/video.ogv
+
+  #code {SQUARE} function in Common Lisp.#
+  (defun square (n)
+    (expt n 2))
+  #
+  #
+
+ >
+
+ < Escaping
+
+  Mk2 is designed to avoid the need of escaping control tokens as much as
+  possible. Still there are some cases where the user has to use the {\\}
+  (backslash) character to avoid the semantics of a specific token. Below
+  are examples of the most common cases.
+
+  #table *Figure 4.* Escaping unintended text token markup.#
+  | Mk2 | Result
+  | {In ECMAScript anonymous functions can be expressed using the {function (...) { ... \\\}\} special form.} \
+  | In ECMAScript anonymous functions can be expressed using the {function (...) { ... \}} special form.
+
+  The Mk2 file in _Figure 4_ escapes the first {\}} (curly bracket)
+  character inside a fixed width text token in order to avoid terminating
+  the fixed width token prematurely. Not that only the closing bracket
+  needs to be escaped because it is the only terminating token of the
+  _String_ in a fixed width token.
+
+
+  #table *Figure 5.* Including the literal backslash character.#
+  | Mk2 | Result
+  | {On DOS, {\\\\\} (backslash) is used to separate the components of a pathname.} \
+  | On DOS, {\\} (backslash) is used to separate the components of a pathname.
+
+  Sometimes the user needs to include the literal backslash character in
+  his prose. The {\\} (backslash) character can be escaped using itself
+  just like any other character as _Figure 5_ shows.
+
+ >
+
+>

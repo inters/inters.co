@@ -1,0 +1,10 @@
+:document (:title "Open Geneva API Documentation")
+:source (:system :open-geneva
+         :api-document (:geneva
+                        :geneva.macros
+                        :geneva.mk2
+                        :geneva.plain-text
+                        :geneva.html
+                        :geneva.latex
+                        :geneva.cl))
+:stylesheets ((:media "screen" :href "/site-assets/api.css"))

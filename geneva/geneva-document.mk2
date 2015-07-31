@@ -1,0 +1,105 @@
+_This is a draft standard, this notice will disappear once the
+specification is final._
+
+A _Geneva document_ is an ordered collection of _elements_. Geneva
+defines the following _element types_:
+
+ + Pargraph
+ + Listing
+ + Table
+ + Plaintext
+ + Media
+ + Section
+
+
+< Rich Text
+
+ A central component of all element types is _rich text_. Rich text is
+ defined as a sequence of _text tokens_, each made up of a set of
+ character strings and an attribute to signify its appearance. There are
+ five different types of text tokens:
+
+ #table *Table 1.* Text token types.#
+ | Name _strings..._ | Description
+ | plain _s_         | Render _s_ in regular font.
+ | bold _s_          | Recommends to render _s_ in bold font.
+ | italic _s_        | Recommends to render _s_ in italic font.
+ | fixed-width _s_   | Recommends to render _s_ in fixed-width font.
+ | url _s_           | Interpret _s_ as _Uniform Resource Locator_.
+ | url _s_, _u_      | Interpret _u_ as _Uniform Resource Locator_ and _s_ as its label.
+
+ The occurrance of _whitespace characters_ in text token strings is
+ restricted by the following rules:
+
+  + Whitespace character sequences of length two or more are to be
+    reduced to a single _space character_ ({ASCII 0x20} or equivalent).
+  + For all token types except the plain type, discard prefixes and
+    suffixes of whitespace character sequences.
+  + For the first and last text tokens in a rich text sequence, discard
+    prefixes and suffixes of whitespace character sequences respectively.
+
+ At least the following conceptual characters have to be recognized as
+ whitespace:
+
+ + _Space_
+ + _Tab_
+ + _Newline_ (including _Carriage Return_)
+ + _Vertical Tab_
+ + _Page break_
+
+>
+
+
+< Element Types
+
+ A *paragraph* consists of exactly one rich text sequence. It signifies a
+ self-contained piece of text.
+
+ A *listing* consists of a finite sequence of rich text sequences. It
+ signifies an ordered group of self-contained text pieces.
+
+ A *table* consists of a two-dimensional matrix of rich text sequences
+ and a single rich text sequence being its description. It signifies a
+ tabular relation of the matrix of rich text pieces.
+
+ A *plaintext* element consists of a verbatim character string and a
+ single rich text sequence being its description. It signifies a sequence
+ of characters which has to be preserved as is except for whitespace
+ prefixes and suffixes (including newlines).
+
+ A *media* element consists of an _Unique Resource Locator_ string and a
+ single rich text sequence being its description. It signifies the
+ embedment of an external resource.
+
+ A description as mentioned above, is a piece of text elaborating the
+ contents of a given element.
+
+ A *section* consists of a Geneva document and a single rich text
+ sequence being its heading. It signifies a continuous subsequence of the
+ document, introduced by a headline (the heading).
+
+>
+
+
+< Formal Definition
+
+ The table below defines a Geneva document formally using the modifed BNF
+ syntax of ANSI Common Lisp's _Notational Conventions_¹.
+
+ #table *Table 2.* Formal definition of a Geneva document.#
+ | document         | document-element{*}
+ | document-element | pargraph {|} listing {|} table {|} plaintext {|} media {|} section
+ | paragraph        | text-token{+}
+ | listing          | rich-text{+}
+ | table            | rich-text table-row{+}
+ | table-row        | rich-text{+}
+ | plaintext        | rich-text string
+ | media            | rich-text string
+ | section          | rich-text document-element{*}
+ | rich-text        | text-token{*}
+ | text-token       | _A text token, see "Rich Text"_
+ | string           | _A character string_
+
+ + 1. [ANSI Common Lisp: Notational Conventions](http://users-phys.au.dk/harder/Notational-Conventions.html)
+
+>

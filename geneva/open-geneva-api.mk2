@@ -1,0 +1,880 @@
+< geneva
+
+ Geneva core package. Exports functions to programatically create and
+ inspect _Geneva documents_.
+
+ In Open Geneva a _document_ is represented as a _list_ of _document
+ elements_. A _document element_ can be obtained using the element
+ constructors {make-paragraph}, {make-listing}, {make-table},
+ {make-media} and {make-section}. In order to ensure integrity, it is
+ recommended to use {make-document} to produce _documents_.
+
+ _Rich text_ is represeted as a _list_ of _text tokens_. A _text token_
+ may be a _string_ or an object obtained using the text token
+ constructors {make-bold}, {make-italic}, {make-fixed-width} and
+ {make-url}.
+
+ _Document elements_ and _text tokens_ can be inspected using the readers
+ {content-type} and {content-values}.
+
+ _Documents_ and _document elements_ are printable and readable using the
+ Common Lisp printer and reader.
+
+ *Exceptional Situations:*
+
+ All functions external to this _package_ validate their parameters and
+ will signal an _error_ of _type_ {type-error} on mismatch.
+
+ *See Also:*
+
+ + [Geneva Document Specification](geneva-document.html)
+ + [Open Geneva User Manual](open-geneva.html)
+ 
+
+ < content-type \(Function\)
+
+  *Syntax:*
+
+  — Function: *content-type* _content_
+
+  *Arguments and Values:*
+
+  _content_—an _element_ or a _text token_.
+
+  *Description*:
+
+  {content-type} returns a _keyword_ denoting the type of _content_ which
+  may be one of {:paragraph}, {:listing}, {:table}, {:plaintext},
+  {:media}, {:section}, {:plain}, {:bold}, {:italic}, {:fixed-width} or
+  {:url}.
+
+ >
+
+
+ < content-values \(Function\)
+
+  *Syntax:*
+
+  — Function: *content-values* _content_
+
+  *Arguments and Values:*
+
+  _content_—an _element_ or a _text token_.
+
+  *Description*:
+
+  {content-values} returns the components of _content_. The returned
+  values are the _normalized_ forms of their respective content
+  constructor's arguments and therefore depend on the type of _content_.
+
+ >
+
+
+ < make-bold \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-bold* _string_
+
+  *Arguments and Values:*
+
+  _string_—a _string_.
+
+  *Description*:
+
+  {make-bold} returns a _text token_ of type {:bold} for _string_.
+
+ >
+
+
+ < make-document \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-document* _elements_
+
+  *Arguments and Values:*
+
+  _elements_—a _list_ of _document elements_.
+
+  *Description*:
+
+  {make-document} returns a _document_ consisting of _elements_.
+
+ >
+
+
+ < make-fixed-width \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-fixed-width* _string_
+
+  *Arguments and Values:*
+
+  _string_—a _string_.
+
+  *Description*:
+
+  {make-fixed-width} returns a _text token_ of type {:fixed-width} for
+  _string_.
+
+ >
+
+
+ < make-italic \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-italic* _string_
+
+  *Arguments and Values:*
+
+  _string_—a _string_.
+
+  *Description*:
+
+  {make-italic} returns a _text token_ of type {:bold} for _string_.
+
+ >
+
+
+ < make-listing \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-listing* _items_
+
+  *Arguments and Values:*
+
+  _items_—a _list_ of _rich text_ sequences.
+
+  *Description*:
+
+  {make-listing} returns a _document element_ of type {:listing} with
+  _items_.
+
+ >
+
+
+ < make-media \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-media* _description_ _url_
+
+  *Arguments and Values:*
+
+  _description_—a _rich text_ sequence.
+
+  _url_—a _string_.
+
+  *Description*:
+
+  {make-media} returns a _document element_ of type {:media} with
+  _description_ and _url_.
+
+ >
+
+
+ < make-paragraph \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-paragraph* _text_
+
+  *Arguments and Values:*
+
+  _text_—a _rich text_ sequence.
+
+  *Description*:
+
+  {make-paragraph} returns _document element_ of type {:paragraph} with
+  _text_.
+
+ >
+
+
+ < make-plaintext \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-plaintext* _description_ _plaintext_
+
+  *Arguments and Values:*
+
+  _description_—a _rich text_ sequence.
+
+  _plaintext_—a _string_.
+
+  *Description*:
+
+  {make-plaintext} returns a _document element_ of type {:plaintext} with
+  _description_ and _plaintext_.
+
+ >
+
+
+ < make-section \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-section* _header_ _elements_
+
+  *Arguments and Values:*
+
+  _header_—a _rich text_ sequence.
+
+  _elements_—a _list_ of _document elements_.
+
+  *Description*:
+
+  {make-section} returns a _document element_ of type {section} with
+  _header_ and _elements_.
+
+ >
+
+
+ < make-table \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-table* _description_ _rows_
+
+  *Arguments and Values:*
+
+  _description_—a _rich text_ sequence.
+
+  _rows_—a two dimensional list of _rich text_ sequences.
+
+  *Description*:
+
+  {make-table} returns a _document element_ of type {:table} with
+  _description_ and _rows_.
+
+ >
+
+
+ < make-url \(Function\)
+
+  *Syntax:*
+
+  — Function: *make-url* _string_ {&optional} _url_
+
+  *Arguments and Values:*
+
+  _string_—a _string_.
+
+  _url_—a _string_.
+
+  *Description*:
+
+  {make-url} returns a _text token_ of type {:url} for _string_. If _url_
+  is given then _string_ is used as the label, otherwise _string_ is both
+  label and URL.
+
+ >
+
+>
+
+
+< geneva.macros
+
+ Macros and reader macros to help with procedural creation of Geneva
+ documents.
+
+
+ < document \(Macro\)
+
+  *Syntax:*
+
+  — Macro: *document* {&rest} _content_
+
+  *Arguments and Values:*
+
+  _document_—_forms_ which evaluate to Geneva _elements_.
+
+  *Description:*
+
+  {section} returns a Geneva _docuent_ with _content_ as if by
+  {geneva:make-document}.
+
+  *Notes:*
+
+  #code#
+(document {content}*) ≡ (make-document (list {content}*))
+  #
+
+ >
+
+
+ < listing \(Macro\)
+
+  *Syntax:*
+
+  — Macro: *listing* {&rest} _items_
+
+  *Arguments and Values:*
+
+  _items_—_forms_ which evaluate to Geneva _rich text_.
+
+  *Description:*
+
+  {listing} returns a Geneva listing of _items_ as if by
+  {geneva:make-listing}.
+
+  *Notes:*
+
+  #code#
+(listing {items}*) ≡ (make-listing (list {items}*))
+  #
+
+ >
+
+
+ < media \(Macro\)
+
+  *Syntax:*
+
+  — Macro: *media* {\(}{&rest} _description_{\)} _url_
+
+  *Arguments and Values:*
+
+  _description_—_forms_ which evaluate to Geneva _text tokens_.
+
+  _url_—a _form_ which evaluates to a _string_ designating an URL.
+
+  *Description:*
+
+  {media} returns a Geneva _media element_ for _url_ with _description_
+  as if by {geneva:make-media}.
+
+  *Notes:*
+
+  #code#
+(media ({description}*) {url})
+≡ (make-media (list {description}*) {url})
+  #
+
+ >
+
+
+ < paragraph \(Macro\)
+
+  *Syntax:*
+
+  — Macro: *paragraph* {&rest} _text_
+
+  *Arguments and Values:*
+
+  _text_—_forms_ which evaluate to Geneva _text tokens_.
+
+  *Description:*
+
+  {paragraph} returns a Geneva paragraph made up of _text_ as if by
+  {geneva:make-paragraph}.
+
+  *Notes:*
+
+  #code#
+(paragraph {text}*) ≡ (make-paragraph (list {text}*))
+  #
+
+ >
+
+
+ < plaintext \(Macro\)
+
+  *Syntax:*
+
+  — Macro: *plaintext* {\(}{&rest} _description_{\)} _plaintext_
+
+  *Arguments and Values:*
+
+  _description_—_forms_ which evaluate to Geneva _text tokens_.
+
+  _plaintext_—a _form_ which evaluates to a _string_.
+
+  *Description:*
+
+  {plaintext} returns a Geneva _plaintext element_ for _plaintext_ with
+  _description_ as if by {geneva:make-plaintext}.
+
+  *Notes:*
+
+  #code#
+(plaintext ({description}*) {plaintext})
+≡ (make-plaintext (list {description}*) {plaintext})
+  #
+
+ >
+
+
+ < section \(Macro\)
+
+  *Syntax:*
+
+  — Macro: *section* {\(}{&rest} _header_{\)} {&rest} _content_
+
+  *Arguments and Values:*
+
+  _header_—_forms_ which evaluate to Geneva _text tokens_.
+
+  _content_—_forms_ which evaluate to Geneva _elements_.
+
+  *Description:*
+
+  {section} returns a Geneva _section element_ with _header_ and
+  _content_ as if by {geneva:make-section}.
+
+  *Notes:*
+
+  #code#
+(section ({header}*) {body}*)
+≡ (make-section (list {header}*) (list {body}*))
+  #
+
+ >
+
+
+ < syntax \(Variable\)
+
+  *Initial Value:*
+
+  {\#\<NAMED-READTABLE GENEVA.MACROS:SYNTAX \#x3020020C7B3D\>}
+
+  *Description:*
+
+  Readtable containing reader macros for markup literals. Defines {\#B},
+  {\#I}, {\#F} and {\#U} to be expanded to code generating Geneva markup
+  at read-time using _make-bold_, _make-italic_, _make-fixed-width_ and
+  _make-url_ respectively.
+
+  *Notes:*
+
+  This readtable is registered as _geneva.macros:syntax_. In order to use
+  it invoke {named-readtable}'s {in-readtable} like so:
+
+  #code#
+(in-readtable geneva.macros:syntax)
+  #
+
+  *Examples:*
+
+  #code#
+#b"bold string" ≡ (geneva:make-bold "bold string")
+#i"italic string" ≡ (geneva:make-italic "italic string")
+#f"fixed-width string" ≡ (geneva:make-fixed-width "fixed-width string")
+#u"url string" ≡ (geneva:make-url "url string")
+  #
+
+  *See Also:*
+
+  + Named-Readtables \({editor-hints.named-readtables}\)
+  
+ >
+
+
+ < table \(Macro\)
+
+  *Syntax:*
+
+  — Macro: *table* {\(}{&rest} _description_{\)} {&rest} _rows_
+
+  *Arguments and Values:*
+
+  _description_—_forms_ which evaluate to Geneva _text tokens_.
+
+  _rows_—a list of column lists containing _forms_ which evaluate to
+  Geneva _text tokens_.
+
+  *Description:*
+
+  {table} returns a Geneva table with _rows_ and _description_ as if by
+  {geneva:make-table}.
+
+  *Examples:*
+
+  #code#
+(table ("10° Celsius in various units.")
+ (("Fahrenheit") ((prin1-to-string (+ (* 1.8 10) 32))))
+ (("Kelvin") ((prin1-to-string (+ 10 273.15)))))
+≡ (make-table (list "10° Celsius in various units.")
+              (list (list "Fahrenheit")
+                    (list (prin1-to-string (+ (* 1.8 10) 32))))
+              (list (list "Kelvin")
+                    (list (prin1-to-string (+ 10 273.15)))))
+  #
+
+ >
+
+>
+
+
+< geneva.mk2
+
+ Implementation of _Mk2_¹, a plain text markup language for the Geneva
+ document preparation system.
+
+ + 1. [The Mk2 Markup Language](mk2.html)
+ 
+
+ < character-position \(Generic Function\)
+
+  *Syntax:*
+
+  — Generic Function: *character-position* _syntax-error_
+
+  *Arguments and Values:*
+
+  _syntax-error_—an _error_ of type {syntax-error}.
+
+  *Description:*
+
+  {character-position} returns a _positive integer_ specifying the
+  character position in the line on which _syntax-error_ occured.
+
+  *See Also:*
+
+  + syntax-error
+  
+ >
+
+
+ < line-position \(Generic Function\)
+
+  *Syntax:*
+
+  — Generic Function: *line-position* _syntax-error_
+
+  *Arguments and Values:*
+
+  _syntax-error_—an _error_ of type {syntax-error}.
+
+  *Description:*
+
+  {line-position} returns a _positive integer_ specifying the line of
+  input on which _syntax-error_ occured.
+
+  *See Also:*
+
+  + syntax-error
+  
+ >
+
+
+ < malformed-element \(Condition Type\)
+
+  *Class Precedence List:*
+
+  {malformed-element}, {syntax-error}, {error}, {serious-condition},
+  {condition}, {standard-object}, {t}
+
+  *Description:*
+
+  The _type_ {malformed-element} is an error condition of type
+  {syntax-error}. It occurs during parsing a _table_, _media_ or
+  _plaintext_ element.
+
+  *See Also:*
+
+  + syntax-error
+  
+ >
+
+
+ < open-section \(Condition Type\)
+
+  *Class Precedence List:*
+
+  {open-section}, {syntax-error}, {error}, {serious-condition},
+  {condition}, {standard-object}, {t}
+
+  *Description:*
+
+  The _type_ {open-section} is an error condition of type {syntax-error}.
+  It denotes an unclosed section.
+
+  *See Also:*
+
+  + syntax-error
+  
+ >
+
+
+ < print-mk2 \(Function\)
+
+  *Syntax:*
+
+  — Function: *print-mk2* _document_ {&optional} _stream_ {&key}
+  _columns_
+
+  *Arguments and Values:*
+
+  _document_—a Geneva _document_.
+
+  _stream_—a _character stream_. The default is _standard output_.
+
+  _columns_—an _unsigned integer_. The default is 72.
+
+  *Description:*
+
+  {print-mk2} writes the _Mk2_ representation of _document_ to _stream_.
+  {print-mk2} attempts to produce lines no longer than _comlums_ in its
+  output.
+
+  *Exceptional Situations:*
+
+  If _document_ is not a valid Geneva _document_ an _error_ of _type_
+  {type-error} is signaled.
+
+  *See Also:*
+
+  + [The Mk2 markup language](mk2.html)
+  
+ >
+
+
+ < read-mk2 \(Function\)
+
+  *Syntax:*
+
+  — Function: *read-mk2* {&optional} _input_
+
+  *Arguments and Values:*
+
+  _input_—a _string_ or _character stream_. The default is _standard
+  input_.
+
+  *Description:*
+
+  {read-mk2} reads an _Mk2_ file from INPUT and returns a _document_.
+
+  *Exceptional Situations:*
+
+  If _input_ is not a valid _Mk2_ file an _error_ of _type_
+  {syntax-error} is signaled.
+
+  *See Also:*
+
+  + syntax-error
+  + [The Mk2 markup language](mk2.html)
+  
+ >
+
+
+ < syntax-error \(Condition Type\)
+
+  *Class Precedence List:*
+
+  {syntax-error}, {error}, {serious-condition}, {condition},
+  {standard-object}, {t}
+
+  *Description:*
+
+  The _type_ {syntax-error} consists of error conditions that occur
+  during {read-mk2}. It denotes a syntax error in the input to
+  {read-mk2}. The functions {line-position} and {character-position} can
+  be used to retrieve the position where the error occurred.
+
+  *See Also:*
+
+  + character-position
+  + line-position
+  
+ >
+
+
+ < unrecognized-input \(Condition Type\)
+
+  *Class Precedence List:*
+
+  {unrecognized-input}, {syntax-error}, {error}, {serious-condition},
+  {condition}, {standard-object}, {t}
+
+  *Description:*
+
+  The _type_ {unrecognized-input} is an error condition of type
+  {syntax-error}. It denotes that a portion of the input could not be
+  interpreted as _Mk2_.
+
+  *See Also:*
+
+  + syntax-error
+  
+ >
+
+>
+
+
+< geneva.plain-text
+
+ Render Geneva documents as plain text.
+
+
+ < render-plain-text \(Function\)
+
+  *Syntax:*
+
+  — Function: *render-plain-text* _document_ {&key} _stream_ _title_
+  _author_ _date_ _index-p_ _index-caption_ _index-headers-p_
+
+  *Description:*
+
+  {render-plain-text} renders _document_ as plain text.
+
+  *See Also:*
+
+  + [Common Rendering Interface](open-geneva.html\#section-3-1)
+  
+ >
+
+>
+
+
+< geneva.html
+
+ Render Geneva documents as HTML.
+
+
+ < render-html \(Function\)
+
+  *Syntax:*
+
+  — Function: *render-html* _document_ {&key} _stream_ _title_ _author_
+  _date_ _index-p_ _index-caption_ _index-headers-p_ _header-level_
+  _id-prefix_
+
+  *Arguments and Values:*
+
+  _header-level_—an _unsigned integer_. The default is {0}.
+
+  _id-prefix_—a _string_. The default is {"section"}.
+
+  *Description:*
+
+  {render-html} renders _document_ as HTML. _header-level_ controls the
+  initial headline level. For instance a _header-level_ of {1} will cause
+  the top level headlines to be rendered as {H2} elements and so forth.
+  _Id-prefix_ is used as a prefix to {NAME} attribute values of HTML
+  anchor elements.
+
+  *See Also:*
+
+  + [Common Rendering Interface](open-geneva.html\#section-3-1)
+  
+ >
+
+
+ < render-html-file \(Function\)
+
+  *Syntax:*
+
+  — Function: *render-html-file* _document_ {&key} _stream_ _title_
+  _author_ _date_ _index-p_ _index-caption_ _index-headers-p_
+  _stylesheets_ _encoding_
+
+  *Arguments and Values:*
+
+  _stylesheets_—a _list_ of stylesheets applicable to
+  {macro-html.widgets:html-widget-document}.
+
+  _encoding_—a _keyword_ designating a valid character encoding
+  \(defaults to {:utf-8}\).
+
+  *Description:*
+
+  {render-html-file} renders _document_ as a standalone HTML file. The
+  resulting HTML file will use _stylesheets_ and declare its content to
+  be in _encoding_.
+
+  *See Also:*
+
+  + [Common Rendering Interface](open-geneva.html\#section-3-1)
+  
+ >
+
+>
+
+
+< geneva.latex
+
+ Render Geneva documents as LaTeX manuscripts.
+
+
+ < render-latex \(Function\)
+
+  *Syntax:*
+
+  — Function: *render-latex* _document_ {&key} _stream_ _title_ _author_
+  _date_ _index-p_ _index-caption_ _index-headers-p_ _preamble_
+  _appendix_
+
+  *Arguments and Values:*
+
+  _preamble_—a _function_ without arguments that prints LaTeX expressions
+  to {\*standard-output\*}. The produced LaTeX expressions will be
+  inserted at the beginning of the LaTeX manuscript.
+
+  _appendix_—a _function_ without arguments that prints LaTeX expressions
+  to {\*standard-output\*}. The produced LaTeX expressions will be
+  appended to the LaTeX manuscript.
+
+  *Description:*
+
+  {render-latex} renders _document_ as a LaTeX manuscript. _Preamble_ and
+  _appendix_ may be supplied to customize the LaTeX layout and
+  functionality. Their output will be inserted at the beginning or
+  appended to the end of the LaTeX manuscript respectively.
+
+  *See Also:*
+
+  + [Common Rendering Interface](open-geneva.html\#section-3-1)
+  
+ >
+
+>
+
+
+< geneva.common-lisp
+
+ Compile a Geneva _document_ from Common Lisp on-line documentation.
+
+
+ < api-document \(Function\)
+
+  *Syntax:*
+
+  — Function: *api-document* {&rest} _packages_
+
+  *Arguments and Values:*
+
+  _packages_—_packages_ or _string designators_ naming _packages_.
+
+  *Description:*
+
+  {api-document} renders the on-line documentation for the _external
+  symbols_ of _packages_ as a Geneva document.
+
+ >
+
+
+ < symbol-document \(Function\)
+
+  *Syntax:*
+
+  — Function: *symbol-document* _symbol_
+
+  *Arguments and Values:*
+
+  _symbol_—a _symbol_.
+
+  *Description:*
+
+  {symbol-document} renders the on-line documentation for _symbol_ as a
+  Geneva document.
+
+ >
+
+>
+
