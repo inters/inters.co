@@ -7,7 +7,7 @@
 (defun html-widget-header ()
   "HTML header widget."
   (header [:class "logotype"]
-    (a [:href "/"] (img :src "/site-assets/logotype.png"))))
+    (a [:href "/"] (img :src "/site-assets/logotype.svg"))))
 
 (defun current-year ()
   "Return current year."
@@ -16,4 +16,9 @@
 (defun html-widget-footer ()
   "HTML footer widget."
   (aside [:class "footer"]
-    (p (format nil "©~a Interstellar Ventures" (current-year)))))
+    (p (format nil "© ~a Interstellar Ventures" (current-year)))
+    (p (b "Interstellar Ventures") (br)
+       "Weiherstr. 4" (br)
+       "53111 Bonn" (br)
+       "Germany")
+    (p (a [:href "mailto:service@inters.co"] "service@inters.co"))))
