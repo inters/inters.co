@@ -1,6 +1,6 @@
-;;;; System definition for INTERSTELLAR.VENTURES.
+;;;; System definition for INTERS.CO
 
-(defsystem interstellar.ventures
+(defsystem inters.co
   :components ((:file "packages")
                (:file "latex-preambles"
                       :depends-on ("packages"))

@@ -1,6 +1,6 @@
 ;;;; Latex preambles for INTERSTELLAR.VENTURES.
 
-(in-package :interstellar.ventures.latex)
+(in-package :inters.co.latex)
 
 (in-readtable texp:syntax)
 

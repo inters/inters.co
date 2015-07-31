@@ -1,6 +1,7 @@
 ;;;; Package for LaTeX preambles.
 
-(defpackage interstellar.ventures.latex
+(defpackage inters.co.latex
+  (:nicknames :interstellar.ventures.latex)
   (:use :cl
         :texp
 	:named-readtables)
@@ -10,7 +11,8 @@
            :latex-en
            :latex-de))
 
-(defpackage interstellar.ventures.html-widgets
+(defpackage inters.co.html-widgets
+  (:nicknames :interstellar.ventures.html-widgets)
   (:use :cl
         :macro-html
         :named-readtables)
@@ -18,7 +20,8 @@
   (:export :html-widget-header
            :html-widget-footer))
 
-(defpackage interstellar.ventures.metagen
+(defpackage inters.co.metagen
+  (:nicknames :interstellar.ventures.metagen)
   (:use :cl
         :geneva.cl
         :geneva.mk2
@@ -26,7 +29,8 @@
         :quicklisp)
   (:export :metagen))
 
-(defpackage interstellar.ventures.bloggen
+(defpackage inters.co.bloggen
+  (:nicknames :interstellar.ventures.bloggen)
   (:use :cl
         :geneva
         :geneva.mk2
@@ -35,11 +39,12 @@
         :uiop)
   (:export :bloggen))
 
-(defpackage interstellar.ventures
-  (:use :interstellar.ventures.latex
-        :interstellar.ventures.html-widgets
-        :interstellar.ventures.metagen
-        :interstellar.ventures.bloggen)
+(defpackage inters.co
+  (:nicknames :interstellar.ventures)
+  (:use :inters.co.latex
+        :inters.co.html-widgets
+        :inters.co.metagen
+        :inters.co.bloggen)
   (:export :latex-en
            :latex-de
            :html-widget-header

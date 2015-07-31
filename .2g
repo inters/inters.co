@@ -2,10 +2,10 @@
 
 :stylesheets ((:media "screen" :href "/site-assets/style.css"))
 
-:html-header interstellar.ventures:html-widget-header
+:html-header inters.co:html-widget-header
 
-:html-footer interstellar.ventures:html-widget-footer
+:html-footer inters.co:html-widget-footer
 
 :meta-defaults (:document (:author "Interstellar Ventures")
                 :html (:index-headers-p nil :author nil)
-                :latex (:preamble interstellar.ventures:latex-en))
+                :latex (:preamble inters.co:latex-en))

@@ -1,6 +1,6 @@
 ;; Compile documents from META hints.
 
-(in-package :interstellar.ventures.metagen)
+(in-package :inters.co.metagen)
 
 (defun compile-api-document (packages path)
   (with-open-file (out (make-pathname :defaults path :type "mk2")

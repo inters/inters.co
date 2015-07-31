@@ -1,6 +1,6 @@
-;;;; HTML widgtes for INTERSTELLAR.VENTURES.
+;;;; HTML widgtes for INTERS.CO
 
-(in-package :interstellar.ventures.html-widgets)
+(in-package :inters.co.html-widgets)
 
 (in-readtable macro-html:syntax)
 

@@ -1,6 +1,6 @@
 ;;;; Simple Blog compiler.
 
-(in-package :interstellar.ventures.bloggen)
+(in-package :inters.co.bloggen)
 
 (let ((days #("Monday" "Tuesday" "Wednesday" "Thursday" "Friday"
               "Saturday" "Sunday"))
