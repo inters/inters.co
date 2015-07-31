@@ -7,8 +7,12 @@
                (:file "html-widgets"
                       :depends-on ("packages"))
                (:file "metagen"
+                      :depends-on ("packages"))
+               (:file "bloggen"
                       :depends-on ("packages")))
   :depends-on ("macro-html"
 	       "named-readtables"
                "open-geneva"
-               "configuration"))
+               "configuration"
+               "rss-feed"
+               "uiop"))

@@ -26,12 +26,23 @@
         :quicklisp)
   (:export :metagen))
 
+(defpackage interstellar.ventures.bloggen
+  (:use :cl
+        :geneva
+        :geneva.mk2
+        :configuration
+        :rss-feed
+        :uiop)
+  (:export :bloggen))
+
 (defpackage interstellar.ventures
   (:use :interstellar.ventures.latex
         :interstellar.ventures.html-widgets
-        :interstellar.ventures.metagen)
+        :interstellar.ventures.metagen
+        :interstellar.ventures.bloggen)
   (:export :latex-en
            :latex-de
            :html-widget-header
            :html-widget-footer
-           :metagen))
+           :metagen
+           :bloggen))
