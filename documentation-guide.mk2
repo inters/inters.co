@@ -1,0 +1,101 @@
+
+_This guide describes the canonical way of writing technical
+documentation at Interstellar. Its purpose is to help associates and
+contributors write conforming documentation. We adhere to this guide in
+order to maintain uniformity and thereby ease the consumption of
+documents maintained by Interstellar._
+
+
+< General Requirements for Technical Documents
+
+ Each _system_ maintained by Interstellar must be accompanied by at least
+ one _API document_. If the system introduces a nontrivial API, e.g. if
+ its correct usage is not obvious, it must also include a _user manual_.
+ A system is defined to be an independent software module consisting of a
+ collection of files, including its documentation.
+
+ The API documents of a software system must document every user facing
+ symbol of that system. A symbol's documentation must define its exact
+ interface, purpose and behavior. An API document is a formal binding
+ contract between the system and its user. It is an error for the system
+ to deviate from the behavior defined in its API documents.
+
+ The user manual of a system is an informal guide to the operation of the
+ system. It should, in conjunction with the system's API documents,
+ enable the reader to successfully operate the system. A system's user
+ manual does not need to provide complete coverage of the system or be
+ independent from its API documents. Generally, the user manual is an
+ informal addition to the system's API documents in which implicit
+ properties of the system can be explained by example. While being
+ informal in style, the user manual must reflect the exact behavior of
+ the system. It is an error for the user manual to deviate from the
+ actual behavior of the system.
+
+ Optionally, a system may include a series of related _papers_. A paper
+ may document a specific design decision or novel approach for
+ instance. A paper does not need to reflect the current version of the
+ system or be maintained beyond common errata.
+
+>
+
+
+< Typographic Conventions
+
+ There are a few typographic conventions which must be abided to in
+ documents maintained by Interstellar:
+
+  + When a specific _concept_ is introduced, the first occurrence of that
+    concept's name must be emphasized in order to highlight its initial
+    introduction. Further uses of that name must appear in regular font
+    to avoid overly littering the text with markup and enhance
+    readability. In order to avoid confusing the reader the author must
+    refrain from introducing multiple concepts with the same name.
+  + References to resources internal or external to the containing
+    document must be emphasized as well. External references must be
+    indexed using superscript digits and their locations must be listed
+    at the end of the section.
+  + System literals, including but not limited to symbols and
+    expressions, must appear in a fixed-width font to emphasize their
+    significance.
+  + A bold font may be used to emphasize the importance of a text
+    sequence, although bold emphasized text must be used sparingly.
+  + When labeling figures, the figure label should be in bold font but
+    occurences of the figure label in text should be in normal font.
+
+>
+
+
+< In the Realms of Common Lisp: On-Line Documentation and Comments
+
+ We differentiate between two kinds of _documentation strings_, namely
+ _internal_ and _external_ documentation strings. Internal documentation
+ strings are meant to be read by engineers maintaining the system while
+ external documentation strings are included in user-facing API
+ documents. It is important to note that not every documentation string
+ external to a _package_ is also external in the sense of this guide. In
+ terms of this guide, a documentation string is external if it is
+ external to its package *and* its package is part of the system's
+ API. The role of API documents is described in _General Requirements for
+ Technical Documents_.
+
+ Internal documentation strings should describe the purpose of the
+ objects they refer to as well as how the described objects serve that
+ purpose. If the object in question is a _function_ or _macro_ then its
+ documentation string should describe each of its parameters. Any
+ argument, variable, function and class name referred to in the
+ documentation string must be written in upper case.
+
+ External documentation strings should describe the purpose of the
+ objects they refer to but not how the objects serve that purpose
+ *unless* that information is required in order to use the object in
+ question. They should be formatted as similar to the style of the _Draft
+ ANSI Common Lisp Standard_¹ as possible. Use ANSI CL's _Notational
+ Conventions_² for reference when in doubt. External documentation
+ strings will be processed by _Open Geneva_ and must be valid Mk2
+ documents. See _The Mk2 Markup Language_³ for reference.
+
+ + 1. [Draft ANSI Common Lisp Standard](http://mr.gy/ansi-common-lisp/)
+ + 2. [ANSI Common Lisp: Notational Conventions](http://mr.gy/ansi-common-lisp/Notational-Conventions.html)
+ + 3. [The Mk2 Markup Language](/geneva/mk2.html)
+
+>
