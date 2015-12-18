@@ -70,7 +70,10 @@
        (usepackage {amsfonts})
        ("DeclareUnicodeCharacter" {12314} {"$" (llbracket) "$"})
        ("DeclareUnicodeCharacter" {12315} {"$" (rrbracket) "$"})
-       ("DeclareUnicodeCharacter"  {9655} {"$" (rhd) "$"})))
+       ("DeclareUnicodeCharacter"  {9655} {"$" (rhd) "$"})
+       ;; This is because TeTeX has no \nobreakdash.
+       (newcommand (nobreakdash {(mbox{-})}))
+       ("DeclareUnicodeCharacter"  {8209} {(nobreakdash)})))
 
 (defun babel (language)
   "Set up babel for LANGUAGE."
