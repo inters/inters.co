@@ -11,7 +11,7 @@
                           daylight-p zone)
         (decode-universal-time universal-time 0) ; Always GMT
       (declare (ignore second minute hour daylight-p zone))
-      (format nil "~a, ~d ~a ~d"
+      (format nil "~a, ~d ~a ~d"
               (aref days day) date (aref months (1- month)) year))))
 
 (defun blog-entries (path)
@@ -22,8 +22,10 @@
 
 (defun read-entries (entries)
   (sort (loop for entry in entries
-              for write-date = (file-write-date entry)
               for meta = (import-configuration entry)
+              for write-date = (if #1=(getf meta :publication-date)
+                                   (parse-date-time #1#)
+                                   (get-universal-time))
            collect
              (list (native-namestring
                     (make-pathname :name (pathname-name entry)

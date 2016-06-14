@@ -15,4 +15,5 @@
                "open-geneva"
                "configuration"
                "rss-feed"
-               "uiop"))
+               "uiop"
+               "cl-date-time-parser"))

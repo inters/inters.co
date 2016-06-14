@@ -36,7 +36,8 @@
         :geneva.mk2
         :configuration
         :rss-feed
-        :uiop)
+        :uiop
+        :cl-date-time-parser)
   (:export :bloggen))
 
 (defpackage inters.co
