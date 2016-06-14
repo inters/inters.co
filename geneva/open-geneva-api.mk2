@@ -31,11 +31,11 @@
  + [Open Geneva User Manual](open-geneva.html)
  
 
- < content-type \(Function\)
+ < content‑type \(Function\)
 
   *Syntax:*
 
-  — Function: *content-type* _content_
+  — Function: *content‑type* _content_
 
   *Arguments and Values:*
 
@@ -51,11 +51,11 @@
  >
 
 
- < content-values \(Function\)
+ < content‑values \(Function\)
 
   *Syntax:*
 
-  — Function: *content-values* _content_
+  — Function: *content‑values* _content_
 
   *Arguments and Values:*
 
@@ -70,11 +70,11 @@
  >
 
 
- < make-bold \(Function\)
+ < make‑bold \(Function\)
 
   *Syntax:*
 
-  — Function: *make-bold* _string_
+  — Function: *make‑bold* _string_
 
   *Arguments and Values:*
 
@@ -87,11 +87,11 @@
  >
 
 
- < make-document \(Function\)
+ < make‑document \(Function\)
 
   *Syntax:*
 
-  — Function: *make-document* _elements_
+  — Function: *make‑document* _elements_
 
   *Arguments and Values:*
 
@@ -104,11 +104,11 @@
  >
 
 
- < make-fixed-width \(Function\)
+ < make‑fixed‑width \(Function\)
 
   *Syntax:*
 
-  — Function: *make-fixed-width* _string_
+  — Function: *make‑fixed‑width* _string_
 
   *Arguments and Values:*
 
@@ -122,11 +122,11 @@
  >
 
 
- < make-italic \(Function\)
+ < make‑italic \(Function\)
 
   *Syntax:*
 
-  — Function: *make-italic* _string_
+  — Function: *make‑italic* _string_
 
   *Arguments and Values:*
 
@@ -139,11 +139,11 @@
  >
 
 
- < make-listing \(Function\)
+ < make‑listing \(Function\)
 
   *Syntax:*
 
-  — Function: *make-listing* _items_
+  — Function: *make‑listing* _items_
 
   *Arguments and Values:*
 
@@ -157,11 +157,11 @@
  >
 
 
- < make-media \(Function\)
+ < make‑media \(Function\)
 
   *Syntax:*
 
-  — Function: *make-media* _description_ _url_
+  — Function: *make‑media* _description_ _url_
 
   *Arguments and Values:*
 
@@ -177,11 +177,11 @@
  >
 
 
- < make-paragraph \(Function\)
+ < make‑paragraph \(Function\)
 
   *Syntax:*
 
-  — Function: *make-paragraph* _text_
+  — Function: *make‑paragraph* _text_
 
   *Arguments and Values:*
 
@@ -195,11 +195,11 @@
  >
 
 
- < make-plaintext \(Function\)
+ < make‑plaintext \(Function\)
 
   *Syntax:*
 
-  — Function: *make-plaintext* _description_ _plaintext_
+  — Function: *make‑plaintext* _description_ _plaintext_
 
   *Arguments and Values:*
 
@@ -215,11 +215,11 @@
  >
 
 
- < make-section \(Function\)
+ < make‑section \(Function\)
 
   *Syntax:*
 
-  — Function: *make-section* _header_ _elements_
+  — Function: *make‑section* _header_ _elements_
 
   *Arguments and Values:*
 
@@ -235,11 +235,11 @@
  >
 
 
- < make-table \(Function\)
+ < make‑table \(Function\)
 
   *Syntax:*
 
-  — Function: *make-table* _description_ _rows_
+  — Function: *make‑table* _description_ _rows_
 
   *Arguments and Values:*
 
@@ -255,11 +255,11 @@
  >
 
 
- < make-url \(Function\)
+ < make‑url \(Function\)
 
   *Syntax:*
 
-  — Function: *make-url* _string_ {&optional} _url_
+  — Function: *make‑url* _string_ {&optional} _url_
 
   *Arguments and Values:*
 
@@ -441,7 +441,7 @@
 
   *Initial Value:*
 
-  {\#\<NAMED-READTABLE GENEVA.MACROS:SYNTAX \#x3020020C7B3D\>}
+  {\#\<NAMED-READTABLE GENEVA.MACROS:SYNTAX \#x3020019D9A5D\>}
 
   *Description:*
 
@@ -519,11 +519,11 @@
  + 1. [The Mk2 Markup Language](mk2.html)
  
 
- < character-position \(Generic Function\)
+ < character‑position \(Generic Function\)
 
   *Syntax:*
 
-  — Generic Function: *character-position* _syntax-error_
+  — Generic Function: *character‑position* _x_
 
   *Arguments and Values:*
 
@@ -541,11 +541,11 @@
  >
 
 
- < line-position \(Generic Function\)
+ < line‑position \(Generic Function\)
 
   *Syntax:*
 
-  — Generic Function: *line-position* _syntax-error_
+  — Generic Function: *line‑position* _x_
 
   *Arguments and Values:*
 
@@ -563,12 +563,12 @@
  >
 
 
- < malformed-element \(Condition Type\)
+ < malformed‑element \(Condition Type\)
 
   *Class Precedence List:*
 
-  {malformed-element}, {syntax-error}, {error}, {serious-condition},
-  {condition}, {standard-object}, {t}
+  {malformed‑element}, {syntax‑error}, {error}, {serious‑condition},
+  {condition}, {standard‑object}, {t}
 
   *Description:*
 
@@ -583,12 +583,12 @@
  >
 
 
- < open-section \(Condition Type\)
+ < open‑section \(Condition Type\)
 
   *Class Precedence List:*
 
-  {open-section}, {syntax-error}, {error}, {serious-condition},
-  {condition}, {standard-object}, {t}
+  {open‑section}, {syntax‑error}, {error}, {serious‑condition},
+  {condition}, {standard‑object}, {t}
 
   *Description:*
 
@@ -602,11 +602,11 @@
  >
 
 
- < print-mk2 \(Function\)
+ < print‑mk2 \(Function\)
 
   *Syntax:*
 
-  — Function: *print-mk2* _document_ {&optional} _stream_ {&key}
+  — Function: *print‑mk2* _document_ {&optional} _stream_ {&key}
   _columns_
 
   *Arguments and Values:*
@@ -635,11 +635,11 @@
  >
 
 
- < read-mk2 \(Function\)
+ < read‑mk2 \(Function\)
 
   *Syntax:*
 
-  — Function: *read-mk2* {&optional} _input_
+  — Function: *read‑mk2* {&optional} _input_
 
   *Arguments and Values:*
 
@@ -663,12 +663,12 @@
  >
 
 
- < syntax-error \(Condition Type\)
+ < syntax‑error \(Condition Type\)
 
   *Class Precedence List:*
 
-  {syntax-error}, {error}, {serious-condition}, {condition},
-  {standard-object}, {t}
+  {syntax‑error}, {error}, {serious‑condition}, {condition},
+  {standard‑object}, {t}
 
   *Description:*
 
@@ -685,12 +685,12 @@
  >
 
 
- < unrecognized-input \(Condition Type\)
+ < unrecognized‑input \(Condition Type\)
 
   *Class Precedence List:*
 
-  {unrecognized-input}, {syntax-error}, {error}, {serious-condition},
-  {condition}, {standard-object}, {t}
+  {unrecognized‑input}, {syntax‑error}, {error}, {serious‑condition},
+  {condition}, {standard‑object}, {t}
 
   *Description:*
 
@@ -712,12 +712,12 @@
  Render Geneva documents as plain text.
 
 
- < render-plain-text \(Function\)
+ < render‑plain‑text \(Function\)
 
   *Syntax:*
 
-  — Function: *render-plain-text* _document_ {&key} _stream_ _title_
-  _author_ _date_ _index-p_ _index-caption_ _index-headers-p_
+  — Function: *render‑plain‑text* _document_ {&key} _stream_ _title_
+  _author_ _date_ _index‑p_ _index‑caption_ _index‑headers‑p_
 
   *Description:*
 
@@ -737,13 +737,13 @@
  Render Geneva documents as HTML.
 
 
- < render-html \(Function\)
+ < render‑html \(Function\)
 
   *Syntax:*
 
-  — Function: *render-html* _document_ {&key} _stream_ _title_ _author_
-  _date_ _index-p_ _index-caption_ _index-headers-p_ _header-level_
-  _id-prefix_
+  — Function: *render‑html* _document_ {&key} _stream_ _title_ _author_
+  _date_ _index‑p_ _index‑caption_ _index‑headers‑p_ _header‑level_
+  _id‑prefix_
 
   *Arguments and Values:*
 
@@ -766,12 +766,12 @@
  >
 
 
- < render-html-file \(Function\)
+ < render‑html‑file \(Function\)
 
   *Syntax:*
 
-  — Function: *render-html-file* _document_ {&key} _stream_ _title_
-  _author_ _date_ _index-p_ _index-caption_ _index-headers-p_
+  — Function: *render‑html‑file* _document_ {&key} _stream_ _title_
+  _author_ _date_ _index‑p_ _index‑caption_ _index‑headers‑p_
   _stylesheets_ _encoding_
 
   *Arguments and Values:*
@@ -802,12 +802,12 @@
  Render Geneva documents as LaTeX manuscripts.
 
 
- < render-latex \(Function\)
+ < render‑latex \(Function\)
 
   *Syntax:*
 
-  — Function: *render-latex* _document_ {&key} _stream_ _title_ _author_
-  _date_ _index-p_ _index-caption_ _index-headers-p_ _preamble_
+  — Function: *render‑latex* _document_ {&key} _stream_ _title_ _author_
+  _date_ _index‑p_ _index‑caption_ _index‑headers‑p_ _preamble_
   _appendix_
 
   *Arguments and Values:*
@@ -841,11 +841,11 @@
  Compile a Geneva _document_ from Common Lisp on-line documentation.
 
 
- < api-document \(Function\)
+ < api‑document \(Function\)
 
   *Syntax:*
 
-  — Function: *api-document* {&rest} _packages_
+  — Function: *api‑document* {&rest} _packages_
 
   *Arguments and Values:*
 
@@ -859,11 +859,11 @@
  >
 
 
- < symbol-document \(Function\)
+ < symbol‑document \(Function\)
 
   *Syntax:*
 
-  — Function: *symbol-document* _symbol_
+  — Function: *symbol‑document* _symbol_
 
   *Arguments and Values:*
 
