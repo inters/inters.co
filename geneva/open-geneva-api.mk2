@@ -441,7 +441,7 @@
 
   *Initial Value:*
 
-  {\#\<NAMED-READTABLE GENEVA.MACROS:SYNTAX \#x3020019D9A5D\>}
+  {\#\<NAMED-READTABLE GENEVA.MACROS:SYNTAX \#x302001D4EF3D\>}
 
   *Description:*
 
@@ -523,7 +523,7 @@
 
   *Syntax:*
 
-  — Generic Function: *character‑position* _x_
+  — Generic Function: *character‑position* _syntax‑error_
 
   *Arguments and Values:*
 
@@ -545,7 +545,7 @@
 
   *Syntax:*
 
-  — Generic Function: *line‑position* _x_
+  — Generic Function: *line‑position* _syntax‑error_
 
   *Arguments and Values:*
 
