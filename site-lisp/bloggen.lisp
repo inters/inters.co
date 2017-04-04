@@ -23,15 +23,13 @@
 (defun read-entries (entries)
   (sort (loop for entry in entries
               for meta = (import-configuration entry)
-              for write-date = (if #1=(getf meta :publication-date)
-                                   (parse-date-time #1#)
-                                   (get-universal-time))
-           collect
+              for write-date = (getf meta :publication-date)
+           when write-date collect
              (list (native-namestring
                     (make-pathname :name (pathname-name entry)
                                    :type "html"))
                    (getf (getf meta :document) :title)
-                   write-date))
+                   (parse-date-time write-date)))
         (lambda (x y)
           (> (third x) (third y)))))
 
