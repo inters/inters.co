@@ -146,16 +146,21 @@
     (babel language)
     (fontenc-t1)
     (inputenc-utf8x)
+    (dpans-symbols)
     (paladdio-font)
+    (distinct-captions)
+    (no-clubs/widows/overflow)
+    (tex (frenchspacing))
     (presentation-sections)
     (presentation-captions)))
 
 (setf (symbol-function 'latex-en)
-      (document-preamble
-       :language :english
-       :format :a4-document))
+      (document-preamble :language :english
+                         :format :a4-document))
 
 (setf (symbol-function 'latex-de)
-      (document-preamble
-       :language :german
-       :format :a4-document))
+      (document-preamble :language :german
+                         :format :a4-document))
+
+(setf (symbol-function 'presentation-en)
+      (presentation-preamble :language :english))

@@ -9,7 +9,8 @@
 	   :handout-preamble
 	   :presentation-preamble
            :latex-en
-           :latex-de))
+           :latex-de
+           :presentation-en))
 
 (defpackage inters.co.html-widgets
   (:nicknames :interstellar.ventures.html-widgets)
