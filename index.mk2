@@ -1,32 +1,27 @@
 < Hello, World!
 
- *Interstellar Ventures* is a software engineering bureau offering
- distinguished services in the field of _software development_. Looking
- to hire one or more software engineers? Contact
- [service@inters.co](mailto:service@inters.co) to receive an offer.
+ *Interstellar Ventures* is a software development consultancy offering
+ services for all things related to software. Looking to hire one or more
+ software engineers? Contact [service@inters.co](mailto:service@inters.co) to
+ receive an offer.
 
  #media _Left to Right:_
  [Ioanna Dimitriou](http://boolesrings.org/ioanna), set theorist turned software engineer.
- [Max Rottenkolber](http://mr.gy), knee deep in software and all its facets.#
+ [Max Rottenkolber](http://mr.gy), knee deep in software and all its facets.
+ [Timo Buhrmester](http://penenen.de), soldering iron wielding hacker.#
  site-assets/staff.jpg
 
  < Open Source R&D
 
  We invest heavily in open source research and development. Below is an
- overview of open source software systems developed by Interstellar.
+ incomplete list open source software developed by Interstellar.
 
- + [Geneva](https://github.com/inters/geneva/)
-   the portable document preparation system
-
- >
-
- < Client Testimonials
-
-  _“Interstellar was instrumental in helping us successfully meet a
-  difficult technical challenge on a tight schedule. They understood our
-  strict code quality requirements and delivered an excellent product
-  accompanied by thorough tests.”_
-  —Michael Roberts, [Xtructure](http://xtructure.com)
+ + [Vita](https://github.com/inters/vita),
+   high-performance IPsec VPN gateway
+ + [Choiceless Grapher](http://cgraph.inters.co),
+   diagram creator for consequences of the axiom of choice (AC)
+ + [Geneva](https://github.com/inters/geneva),
+   portable document preparation system
 
  >
 
