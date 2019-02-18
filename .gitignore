@@ -1,5 +1,5 @@
-*.pdf
-*.toc
-*.txt
-*.log
-*.html
+*/*.pdf
+*/*.toc
+*/*.txt
+*/*.log
+*/*.html
