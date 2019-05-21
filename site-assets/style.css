@@ -1,0 +1,239 @@
+html {
+    background: white;
+    color: black;
+    font-family: Helvetica Neue, Helvetica, Lato, Arial, sans-serif;
+    font-weight: medium;
+    background: white;
+    line-height: 1.4;
+    margin: 0 1.4em 0 1.4em;
+    padding: 0;
+}
+
+p {
+    margin: 0 0 1.4em 0;
+}
+
+code, pre, tt {
+    font-family: Inconsolata, monospace;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:link:hover {
+    text-decoration: underline;
+}
+
+ul, ol, dl {
+    margin: 0.35em 0 1.4em 0;
+}
+
+li, dd , dt {
+    margin: 0 0 0.35em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    margin-bottom: 1.4em;
+    clear: both;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+h4, h5, h6 {
+    font-weight: bold;
+    font-size: 1.0em;
+}
+
+nav {
+    margin: 1.4em 0;
+}
+
+nav ul, nav ol {
+    margin: 0;
+}
+
+figure {
+    margin: 0 0 1.4em 0;
+}
+
+figure > pre {
+    min-width: 37.3em;
+    display: inline-block;
+}
+
+figure audio {
+    width: 100%;
+    border-radius: 0.175em;
+}
+
+
+figure img {
+    border-radius: 0.35em;
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+figcaption {
+    text-align: center;
+    font-size: 0.9em;
+    padding: 0.777775em 1.55555em 0 1.55555em;
+}
+
+pre {
+    padding: 0.35em;
+    background: #f9f9f9;
+    border-radius: 0.35em;
+    margin: 0;
+}
+
+table {
+    margin: auto;
+    width: 100%;
+    padding: 1.4em;
+    border-collapse: collapse;
+    border: 1px solid black;
+    background: white;
+}
+
+th {
+    font-size: 0.9em;
+    padding: 0.3888889em 0.7777778em;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+td {
+    padding: 0.35em 0.7em;
+    border-right: 1px solid black;
+}
+
+body {
+    max-width: 38em;
+    margin: 0 auto;
+    padding: 0;
+}
+
+p, ul, ol, table, section, header, nav, img {
+    max-width: 100%;
+}
+
+aside {
+    margin: 0 0 1.4em 0;
+}
+
+aside p {
+    font-weight: 300;
+}
+
+aside.meta {
+    margin: 1.4em 0;
+    text-align: center;
+}
+
+aside.meta p {
+    font-size: 0.9em;
+    background: white;
+    line-height: 1.5;
+}
+
+aside.meta a {
+    font-size: 0.9em;
+}
+
+aside.meta a:after {
+    color: black;
+    content: " /";
+}
+aside.meta a:last-child:after {
+    content: "";
+}
+
+aside.meta a:hover {
+    text-decoration: none;
+}
+
+aside.meta span {
+    margin-right: 0.7em;
+}
+
+header.logotype {
+    margin: 2.4em 0;
+    text-align: center;
+}
+
+header.logotype img {
+    height: 4.8em;
+    display: inline;
+    vertical-align: middle;
+}
+
+aside.footer {
+    margin: 2.4em 0;
+    text-align: center;
+}
+
+aside.footer p {
+    margin: 0.7777778em 0;
+    font-size: 0.9em;
+}
+
+article {
+    margin-top: 1.4em;
+    margin-bottom: 2.8em;
+}
+
+@media all and (min-width: 64.4em) {
+    header.logotype {
+        position: fixed;
+        top: 0em;
+        left: 2.4em;
+        text-align: left;
+    }
+    aside.meta {
+        width: 13.2em;
+        position: fixed;
+        top: 7.2em;
+        left: 3em;
+        text-align: left;
+    }
+    aside.footer {
+        width: 13.2em;
+        position: fixed;
+        top: 9em;
+        left: 3em;
+        text-align: left;
+    }
+    aside.meta span:after {
+        content:"\a";
+        white-space: pre;
+    }
+    body {
+        margin-left: 24em;
+    }
+}
+
+@media all and (max-width: 30em) {
+    aside.meta span:after {
+        content:"\a";
+        white-space: pre;
+    }
+}
