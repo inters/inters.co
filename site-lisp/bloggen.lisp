@@ -23,7 +23,8 @@
 (defun read-entries (entries)
   (sort (loop for entry in entries
               for meta = (import-configuration entry)
-              for write-date = (getf meta :publication-date)
+              for write-date = (getf meta :publication-date
+                                     (getf (getf meta :document) :date))
            when write-date collect
              (list (native-namestring
                     (make-pathname :name (pathname-name entry)
