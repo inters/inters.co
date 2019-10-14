@@ -23,6 +23,12 @@ a:link {
     font-weight: 600;
 }
 
+
+
+.toast {
+    background-color: rgba(255,255,255,0.95);
+}
+
 body {
     font-family: 'Inter UI',sans-serif
 }
