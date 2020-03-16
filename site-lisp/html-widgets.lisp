@@ -17,8 +17,4 @@
   "HTML footer widget."
   (aside [:class "footer"]
     (p (format nil "© ~a Interstellar Ventures" (current-year)))
-    (p (b "Interstellar Ventures") (br)
-       "Weiherstr. 4" (br)
-       "53111 Bonn" (br)
-       "Germany")
     (p (a [:href "mailto:service@inters.co"] "service@inters.co"))))
